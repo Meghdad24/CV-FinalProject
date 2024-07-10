@@ -29,12 +29,13 @@ def mask(image: np.ndarray, points: np.ndarray, cover: np.ndarray) -> np.ndarray
 
 
 # MAIN
-img = cv2.imread("../resource/image/night (1782).jpg")
-cover = cv2.imread("../resource/kntu.jpg")
+if __name__ == '__main__':
+    img = cv2.imread("../resource/image/night (1782).jpg")
+    cover = cv2.imread("../resource/kntu.jpg")
 
-with open("../resource/label/598e99ea-night_1782.txt", 'r') as file:
-    points = label_to_points(file.read().strip().split(" "))
+    with open("../resource/label/598e99ea-night_1782.txt", 'r') as file:
+        points = label_to_points(file.read().strip().split(" "))
 
-cv2.imshow("img", mask(img, points, cover))
+    cv2.imshow("img", mask(img, points, cover))
 
-cv2.waitKey()
+    cv2.waitKey()
