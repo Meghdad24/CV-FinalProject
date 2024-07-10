@@ -1,6 +1,6 @@
 import numpy as np
 import cv2
-import masking
+from masking import label_to_points
 
 def extract(image: np.ndarray, points: np.ndarray) -> np.ndarray:
     image_height, image_weight = image.shape[:2]
@@ -22,7 +22,7 @@ if __name__ == '__main__':
     cover = cv2.imread("../resource/kntu.jpg")
 
     with open("../resource/label/6e844fd3-day_02553.txt", 'r') as file:
-        points = masking.label_to_points(file.read().strip().split(" "))
+        points = label_to_points(file.read().strip().split(" "))
 
     cv2.imshow("img", extract(img, points))
 
